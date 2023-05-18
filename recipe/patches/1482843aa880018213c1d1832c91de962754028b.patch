@@ -1,0 +1,25 @@
+From 1482843aa880018213c1d1832c91de962754028b Mon Sep 17 00:00:00 2001
+From: Dimitry Andric <dimitry@andric.com>
+Date: Thu, 8 Dec 2022 13:08:53 +0100
+Subject: [PATCH] Only use GNU specific strerror_r() API when __GLIBC__ is
+ defined.
+
+---
+ src/internal.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/internal.c b/src/internal.c
+index ef83b712b..a7747b700 100644
+--- a/src/internal.c
++++ b/src/internal.c
+@@ -431,8 +431,8 @@ char *cleanpath(char *path) {
+ 
+ const char *xstrerror(int errnum, char *buf, size_t len) {
+ #ifdef HAVE_STRERROR_R
+-# ifdef __USE_GNU
+-    /* Annoying linux specific API contract */
++# if defined(__USE_GNU) && defined(__GLIBC__)
++    /* Annoying GNU specific API contract */
+     return strerror_r(errnum, buf, len);
+ # else
+     strerror_r(errnum, buf, len);
