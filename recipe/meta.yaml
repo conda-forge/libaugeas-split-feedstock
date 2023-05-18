@@ -8,9 +8,12 @@ package:
 source:
   url: http://download.augeas.net/augeas-{{ version }}.tar.gz
   sha256: 321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87
+  patches:
+    # xref: https://github.com/hercules-team/augeas/pull/791
+    - patches/1482843aa880018213c1d1832c91de962754028b.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: libaugeas
