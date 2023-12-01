@@ -13,7 +13,7 @@ source:
     - patches/1482843aa880018213c1d1832c91de962754028b.patch
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: libaugeas
