@@ -10,7 +10,7 @@ source:
   sha256: 368bfdd782e4b9c7163baadd621359c82b162734864b667051ff6bcb57b9edff
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: libaugeas
@@ -29,7 +29,7 @@ outputs:
         - pkg-config
       host:
         - readline
-        - libxml2
+        - libxml2-devel
     test:
       requires:
         - pkg-config
