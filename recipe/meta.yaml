@@ -1,5 +1,5 @@
 {% set name = "libaugeas" %}
-{% set version = "1.14.1" %}
+{% set version = "1.15.0" %}
 
 package:
   name: {{ name }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/hercules-team/augeas/releases/download/release-{{ version }}/augeas-{{ version }}.tar.gz
-  sha256: 368bfdd782e4b9c7163baadd621359c82b162734864b667051ff6bcb57b9edff
+  sha256: 95b2b5c4c10c964024c694d6349024e8033dcfa1aaba88884ea09394908d30ff
 
 build:
   number: 0
@@ -17,7 +17,7 @@ outputs:
     script: install.sh
     build:
       # https://github.com/hercules-team/augeas/issues/612
-      skip: True  # [win]
+      skip: true  # [win]
       run_exports:
         # https://abi-laboratory.pro/index.php?view=timeline&l=augeas
         - {{ pin_subpackage('libaugeas', max_pin='x') }}
@@ -45,7 +45,7 @@ outputs:
     script: install.sh
     build:
       # https://github.com/hercules-team/augeas/issues/612
-      skip: True  # [win]
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
